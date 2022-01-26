@@ -8,8 +8,6 @@ description: >
   This article provides a description of how I built this site using Hugo and the Docsy theme.
 ---
 
-# Building this site
-
 ### Introduction
 
 I wanted to build a site to store all the information I'm gathering for my course, *Practical Molecular Dynamics*. I've been happy using Hugo to build my *PyMOL Notes* website, and I like the automatic deploy to [GitHub Pages](https://pages.github.com/). This time I'll use the [Docsy theme](https://themes.gohugo.io/themes/docsy/) for Hugo. It is a theme designed for documentation. It looks great and has all the features I want. For a list of features and helpful tips, check out the [Docsy documentation](https://www.docsy.dev/docs/).
@@ -118,6 +116,9 @@ Success! Now I have a site that I can use as a template.
 
 - Add the site name to `title = " "`. There are two places, one at the top, and one under `[languages]`. For now I'll name the site *Molecular Dynamics*.
 - I'll comment out the sections I don't need like the other languages and some of the social media sections.
+- Comment out the *Privacy Policy* link.
+- Change links to GitHub and StackOverflow. I'll modify the link to point to the repository of this site after I get things up and running.
+- In `[markup]`, change `[markup.highlight]` to `style = "emacs"`.
 
 ### Modify Home Page
 
@@ -131,9 +132,42 @@ Success! Now I have a site that I can use as a template.
 
 Copy the `md-sims/themes/docsy/layouts/partials/footer.html` to `md-sims/layouts/partials`, then modify the copy, This will override the theme file. Using overrides allows you to update the theme files without destroying your modifications.
 
-{{% alert title="Note" color="info" %}}
-I wanted to modify the `footer.html` because I wanted to change the copyright notice text. It is actually found in `config.toml`, not in `footer.html`.
+{{% alert title="Note" color="primary" %}}
+The copyright notice, Privacy Policy, and links to StackOverflow and GitHub are found in `config.toml`, not in `footer.html`. To change the text of the "About" link in the footer, change the `title` text in `content/en/about/_index.html`.
 {{% /alert %}}
+
+#### Alert Shortcodes
+
+Here are the different colors assigned to the alert shortcodes will render. You can change the title to whatever you like.
+
+{{% alert title="Warning" color="warning" %}}
+This is a warning. Use `title="Warning" color="warning"`
+{{% /alert %}}
+
+{{% alert title="Success" color="success" %}}
+This is a success alert. Use `title="Success" color="success"`
+{{% /alert %}}
+
+{{% alert title="Information" color="info" %}}
+This is an information alert. Use `title="Information" color="info"`
+{{% /alert %}}
+
+{{% alert title="Tip" color="primary" %}}
+This is a tip alert. Use `title="Tip" color="primary"`
+{{% /alert %}}
+
+{{% alert title="Dark" color="dark" %}}
+This is a dark alert. Use `title="some title" color="dark"`
+{{% /alert %}}
+
+{{% alert title="Orange" color="secondary" %}}
+This is an orange alert. Use `title="some title" color="secondary"`
+{{% /alert %}}
+
+
+### Modify the "About" Page
+
+Make appropriate changes to `content/en/about/_index.html`.
 
 ### Git Stuff
 
@@ -143,3 +177,5 @@ I need to do the following to clean up the version control of the site.
 - Remove `.DS_store` and similar files from tracking by git
 - Push to `GitHub`
 - Set up automatic deploy
+
+
