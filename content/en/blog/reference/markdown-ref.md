@@ -1,11 +1,13 @@
 
 ---
-title: "Another Great Release"
-linkTitle: "Release New Features"
-date: 2018-01-04
+title: "Markdown"
+linkTitle: "Markdown"
+date: 2022-01-26
 description: >
-  A short lead description about this content page. Text here can also be **bold** or _italic_ and can even be split over multiple paragraphs.
+  This is just a guide to basic Markdown syntax.
 ---
+
+See the official [Markdown Guide](https://www.markdownguide.org/) for more information, including a handy [Markdown syntax cheat sheet](https://www.markdownguide.org/cheat-sheet/) and [Extended syntax](https://www.markdownguide.org/extended-syntax/). The text below was taken from the [Docsy documentation](https://www.docsy.dev/docs/) example pages that were installed with the theme.
 
 Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines (unless hovered over).
 
@@ -23,10 +25,6 @@ There should be whitespace between paragraphs. There should be whitespace betwee
 
 This is a normal paragraph following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.  Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.  Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.
 
-
-
-Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.
-
 On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.
 
 Lorem markdownum tuta hospes stabat; idem saxum facit quaterque repetito
@@ -40,7 +38,7 @@ Dixi ad aestum.
 
 > This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.
 
-### Header 3
+### Header 
 
 ```
 This is a code block following a header.
@@ -124,8 +122,7 @@ Birthplace
 Color
 : Green
 
-
-----------------
+---
 
 Tables should have bold headings and alternating shaded rows.
 
@@ -143,7 +140,7 @@ If a table is too wide, it should scroll horizontally.
 | Prince            | Purple Rain     | 1984 | Warner Brothers Records | Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal | Let's Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I'm a Star, Purple Rain |
 | Beastie Boys      | License to Ill  | 1986 | Mercury Records | noawardsbutthistablecelliswide | Rhymin & Stealin, The New Style, She's Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill |
 
-----------------
+---
 
 Code snippets like `var foo = "bar";` can be shown inline.
 
@@ -185,7 +182,7 @@ Inline code inside table cells should still be distinguishable.
 | Javascript  | `var foo = "bar";` |
 | Ruby        | `foo = "bar"{`      |
 
-----------------
+---
 
 Small images should be shown at their actual size.
 
@@ -204,7 +201,6 @@ Large images should always scale down and fit in the content container.
 {{< alert type="success" >}}This is a successful alert.{{< /alert >}}
 {{< alert type="warning" >}}This is a warning!{{< /alert >}}
 {{< alert type="warning" title="Warning!" >}}This is a warning with a title!{{< /alert >}}
-
 
 ## Sizing
 

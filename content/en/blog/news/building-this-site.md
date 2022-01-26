@@ -1,5 +1,5 @@
 ---
-categories: ["Examples"]
+# categories: ["Examples"]
 tags: ["Hugo", "Docsy"]
 title: "Building This Site"
 linkTitle: "Building This Site"
@@ -138,7 +138,7 @@ The copyright notice, Privacy Policy, and links to StackOverflow and GitHub are 
 
 #### Alert Shortcodes
 
-Here are the different colors assigned to the alert shortcodes will render. You can change the title to whatever you like.
+Here are the different colors assigned to the alert shortcodes, and how each will render. You can change the title to whatever you like.
 
 {{% alert title="Warning" color="warning" %}}
 This is a warning. Use `title="Warning" color="warning"`
@@ -164,10 +164,24 @@ This is a dark alert. Use `title="some title" color="dark"`
 This is an orange alert. Use `title="some title" color="secondary"`
 {{% /alert %}}
 
-
 ### Modify the "About" Page
 
 Make appropriate changes to `content/en/about/_index.html`.
+
+### Modify the `content` Directory
+
+Because this is not a "true" documentation website, I will rename the *Documentation* directory. I'll also delete the unneeded subdirectories, and rename others.
+
+Rename the `md-sims/content/en/blog/releases` directory to `reference` and change the `_index.md` contents to:
+
+```toml
+---
+title: "Reference"
+linkTitle: "Reference"
+weight: 20
+---
+
+```
 
 ### Git Stuff
 
@@ -177,5 +191,3 @@ I need to do the following to clean up the version control of the site.
 - Remove `.DS_store` and similar files from tracking by git
 - Push to `GitHub`
 - Set up automatic deploy
-
-
