@@ -1,7 +1,7 @@
 baseURL = "/"
 languageCode = 'en-us'
 
-title = "Molecular Dynamics Simulations"
+title = "Molecular Dynamics"
 
 enableRobotsTXT = true
 
@@ -72,7 +72,7 @@ id = "UA-00000000-0"
 
 [languages]
 [languages.en]
-title = "Molecular Dynamics Simulations"
+title = "Molecular Dynamics"
 description = "A place to collect and organize my notes"
 languageName ="English"
 # Weight used for sorting.
