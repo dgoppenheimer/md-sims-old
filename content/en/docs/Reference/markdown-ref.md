@@ -1,25 +1,47 @@
-
 ---
 title: "Markdown"
 linkTitle: "Markdown"
 date: 2022-01-26
 description: >
-  This is just a guide to basic Markdown syntax.
+  A short guide to basic Markdown syntax.
 ---
 
 See the official [Markdown Guide](https://www.markdownguide.org/) for more information, including a handy [Markdown syntax cheat sheet](https://www.markdownguide.org/cheat-sheet/) and [Extended syntax](https://www.markdownguide.org/extended-syntax/). The text below was taken from the [Docsy documentation](https://www.docsy.dev/docs/) example pages that were installed with the theme.
 
-Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines (unless hovered over).
+### Markdown Examples
+
+Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines.
+
+```md
+**bold**
+_italic_
+~~strikethrough~~
+[Links](https://github.com)
+```
 
 There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.
+
+To show a blockquote, type this:
+
+```md
+> There should be no margin above this first sentence.
+>
+> Blockquotes should be a lighter gray with a border along the left side in the secondary color.
+>
+> There should be no margin below this final sentence.
+```
+
+It will be rendered as:
 
 > There should be no margin above this first sentence.
 >
 > Blockquotes should be a lighter gray with a border along the left side in the secondary color.
 >
 > There should be no margin below this final sentence.
+
+Headers indicated with hash symbols, like `## First Header`.
 
 ## First Header
 
@@ -38,9 +60,9 @@ Dixi ad aestum.
 
 > This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.
 
-### Header 
+### Header 3
 
-```
+```md
 This is a code block following a header.
 ```
 
@@ -58,11 +80,26 @@ This is a code block following a header.
 
 ###### Header 6
 
-| What      | Follows         |
+Sixth level headers are typed with six hash symbols preceding the header, `###### Header 6`.
+
+Tables use pipes to mark columns. Dashes are used to delineate headers from table text. 
+
+```md
+| cell 1    | cell 2          |
 |-----------|-----------------|
-| A table   | A header        |
-| A table   | A header        |
-| A table   | A header        |
+| text      | more text       |
+| text      | more text       |
+| text      | more text       |
+
+```
+
+| cell 1    | cell 2          |
+|-----------|-----------------|
+| text      | more text       |
+| text      | more text       |
+| text      | more text       |
+
+To create a horizontal line, type three dashes: `---`.
 
 ----------------
 
@@ -109,6 +146,20 @@ And a nested list:
   * Raphael
 
 Definition lists can be used with Markdown syntax. Definition terms are bold.
+
+```md
+Name
+: Godzilla
+
+Born
+: 1952
+
+Birthplace
+: Japan
+
+Color
+: Green
+```
 
 Name
 : Godzilla
