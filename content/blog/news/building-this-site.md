@@ -5,7 +5,7 @@ title: "Building This Site"
 linkTitle: "Building This Site"
 date: 2022-01-26
 description: >
-  This article provides a description of how I built this site using Hugo and the Docsy theme.
+  This blog post provides a description of how I built this site using Hugo and the Docsy theme.
 ---
 
 ### Introduction
@@ -180,8 +180,9 @@ title: "Reference"
 linkTitle: "Reference"
 weight: 20
 ---
-
 ```
+
+Because I will not be using multiple languages, I moved the content out of the `en/` directory and into the root of the `content/` directory.
 
 ### Git Stuff
 
