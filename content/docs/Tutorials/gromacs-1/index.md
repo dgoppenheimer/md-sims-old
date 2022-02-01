@@ -89,6 +89,22 @@ from google.colab import output
 output.enable_custom_widget_manager()
 ```
 
+There is a development version of a graphical user interface (gui) that runs well on colab. Let's play with it for a bit.
+
+```py
+import os
+```
+
+```py
+import nglview as nv
+
+view = nv.demo()
+view.gui_style = 'ngl'
+view
+```
+
+Once the gui loads, you can use the *file* menu to load `.pdb` files directly from your computer. The gui may be easier to use initially, because you don't have to memorize the commands. But if you want to reproduce a style that takes more than a few mouse clicks, then reusing the commands will be more efficient.
+
 ```py
 # Testing NGLView
 import nglview
