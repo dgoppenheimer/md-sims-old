@@ -14,9 +14,13 @@ resources:
 
 ## Introduction
 
-[NGLView](http://nglviewer.org/nglview/latest/) is an interactive widget to show and manipulate molecular structures and trajectories in Jupyter notebooks.
+[NGLView](http://nglviewer.org/nglview/latest/) is an interactive widget to show and manipulate molecular structures and trajectories in Jupyter notebooks [^1]. It is based on NGLViewer, a web application for molecular visualization [^2] [^3]. In this tutorial we will use a Jupyter notebook running on [Google Colaboratory](https://colab.research.google.com/) (Google Colab or Colab for short). You can start the notebook by going to the [course GitHub repository](), and clicking the `Open in Colab` button.
 
-Here is an [example notebook](https://mybinder.org/repo/hainm/nglview-notebooks),
+Here is an [example notebook](https://mybinder.org/repo/hainm/nglview-notebooks).
+
+{{% alert title="Note" color="info" %}}
+I have not had much luck getting the above notebook to launch. I'll likely remove it from this tutorial.
+{{% /alert %}}
 
 ## Learning Objectives
 
@@ -30,6 +34,7 @@ By the end of this assignment, students will be able to:
 - Save commands to easily reproduce multiple representations.
 - Save protein images as `.png` files.
 - Save trajectories as movie files.
+- Explain how the Q61L mutation in RAC1 leads to cancer by inactivating the GTPase.
 
 ## Installing the Software
 
@@ -37,7 +42,7 @@ By the end of this assignment, students will be able to:
 
 Be sure that you are logged into your <mark>course (not personal or UF)</mark> Google account.
 
-- Mount your Google Drive. 
+- Mount your Google Drive.
 - Save a copy of this notebook to your Google Drive and name it `<LastNameFirstInitial-NGLview-Tutorial.ipynb`, of course using your last name and first initial (without spaces and without the `< >` symbols.
 
 ```py
@@ -84,7 +89,7 @@ view.add_licorice('ALA, GLU')
 view.add_ball_and_stick("not protein")
 ```
 
-Commands for NGLView can be found in the [NGLView Documentation](http://nglviewer.org/nglview/latest/api.html#), but not many examples are given. 
+Commands for NGLView can be found in the [NGLView Documentation](http://nglviewer.org/nglview/latest/api.html#), but not many examples are given. Also, visit the [NGL](https://www.rcsb.org/docs/3d-viewers/ngl) page on the RCSB website for help in using NGLViewer.
 
 ### Enable the NGLView GUI
 
@@ -108,7 +113,16 @@ If the GUI was enabled successfully, you should see something like this:
 Successfully enabled NGLViewer GUI
 {{< /imgproc >}}
 
-See the [MDsrv website](https://nglviewer.org/mdsrv/viewing.html) for an explanation of the controls for the NGLViewer GUI.
+See the [MDsrv website](https://nglviewer.org/mdsrv/viewing.html) for a brief explanation of the controls for the NGLViewer GUI. Here is a short summary:
+
+#### Interactive Controls
+
+- `scroll` (or `scroll wheel`) zoom scene
+- `scroll-shift` move near clipping plane and far fog
+- `drag-right click` pan/translate scene (this works with 3-button mouse, but not track pad on Mac)
+- `drag-left click` rotate scene
+- `clickPick-left click` auto view picked component element
+- `left click` on the desired atom (or its representation) to center view on that atom
 
 #### Questions
 
@@ -130,6 +144,80 @@ Explore the [NGLView documentation](http://nglviewer.org/nglview/latest/api.html
 ## Assignment
 
 Much of this assignment was adapted from the [Analyzing proteins using python](https://github.com/bigginlab/OxCompBio/blob/master/tutorials/Python/12_ProteinAnalysis/12_ProteinAnalysis.ipynb) Jupyter notebook, mostly the *Visualising a PDB using NGLView* subsection.
+
+In a previous assignment we learned how to gather information from `.pdb` files using `grep` and `awk`. The Jupyter notebook mentioned above used the program, [MDAnalysis](https://userguide.mdanalysis.org/1.0.0/index.html), to accomplish many of the same tasks. Either way is fine.
+
+Here we will focus our attention on using the GUI. All of the manipulations that you perform on a protein in the GUI can be done my typing commands in a code cell and then executing that cell. The pros of using the GUI include not having to memorize a long list of commands that have to be typed perfectly. The cons of using the GUI include the difficulty of repeating a long set of instructions using the mouse when the execution of a single code cell can accomplish the same task. Using both these tools (the GUI and code cells) can be very handy when examining your protein structure files.
+
+### Use the GUI
+
+Import human H-RAS Bound to a GTP Analog in NGLView, PDB ID `4g0n` (note that it is a zero and not an "oh"). Refer back to the [MDsrv website](https://nglviewer.org/mdsrv/viewing.html) for a brief explanation of the controls for the NGLViewer GUI.
+
+Also visit the [NGLViewer Selection Language](https://nglviewer.org/ngl/api/manual/usage/selection-language.html) web page for instructions on how to select chains, ligands, and residues.
+
+1. Go to *File*&#8594;*PDB*, and type `4g0n` into the box and then hit `return` on your keyboard.
+2. Delete the representations of the other protein, and center `4g0n`.
+
+You can see that `4g0n` consists of two proteins, Ras and the Ras-binding domain (RBD) of Raf kinase.
+
+3. To hide the representation of the Raf RBD, type `:A` in the `cartoon` filter box, and hit `return`. This means that you want to filter the cartoon representations to only chain A.
+
+4. Add a `hyperball` representation, and in the filter box, type `HOH and :A` (show waters and chain A) and hit `return`.
+
+5. Alter the representation of the waters, by changing the `colorScheme` to `uniform` and clicking the `colorValue` box and entering `FF33F9` (and always hit `return`).
+
+6. Add a`surface` representation to the Ras protein, and change the opacity so you can still see the cartoon. Filter the surface representation by entering `protein and not HOH and not ligand` in the filter box. Adjust the opacity so you can see the binding pocket. Also, play around with the different `surfaceTypes`.
+
+The `surfaceType` abbreviations are:
+
+- `vws`: van der Waals surface
+- `sas`: solvent accessible surface
+- `ms`: molecular surface
+- `ses`: solvent excluded surface
+- `av`: high quality molecular surface
+
+7. Filter the `hyperball` representation by typing `HOH and 364` into the filter box. Adjust the `radiusScale` to `1.0`.
+
+8. Add a `ball and stick` representation to the Ras protein and filter it by typing `61` (amino acid 61) into the filter box.
+
+You can see here that water molecule 364 is in the binding pocket between the GTP analog and the glutamine at position 61. This water molecule plays a key role in hydrolyzing the gamma phosphate of GTP to turn Ras signaling off.
+
+### Use Code
+
+Restart runtime.
+Install NGLView.
+
+```py
+import nglview as nv
+view = nglview.show_pdbid("3pqr", default=False)  # load "3pqr" from RCSB PDB and display viewer widget
+view.add_cartoon(selection="protein", color='grey')
+view.center()
+view.gui_style = 'ngl'
+view
+```
+
+
+Let's test another protein. Download `4tuh` (Bcl-xL in complex with inhibitor) from the RCSB database. 
+
+---
+
+#Uncomment the command below to add a hyperball representation of the crystal water oxygens in grey
+#protein_view.add_hyperball('HOH', color='grey', opacity=1.0)
+
+
+&#8594;
+
+
+## Colors
+
+You can use [CSS named colors](https://www.w3schools.com/colors/colors_groups.asp) in NGLView. Colors should always be lower case.
+
+Try it!
+
+
+
+
+
 
 ---
 
@@ -154,3 +242,17 @@ superpose(components=[1], ref=0, align=True, selection_0='', selection_1='')
 # port superpose method from NGL. Good for single structures. 
 ```
 
+```py
+def superpose(self, components=[1,], ref=0, align=True, selection_0='', selection_1=''):
+  for index in components:
+            self._remote_call('superpose', target='Widget',
+                    args=[ref, index, align, selection_0, selection_1])
+  
+nglview.superpose(components=[1], ref=0, align=True, selection_0='4g0n', selection_1='4gzl')
+```
+
+[^1]: Nguyen H, Case DA & Rose AS (2018) NGLview-interactive molecular graphics for Jupyter notebooks. *Bioinformatics* **34**: 1241-1242.[DOI: 10.1093/bioinformatics/btx789](https://doi.org/10.1093/bioinformatics/btx789)
+
+[^2]: Rose AS & Hildebrand PW (2015) NGL Viewer: a web application for molecular visualization. *Nucleic Acids Res* **43**: W576-9. [DOI: 10.1093/nar/gkv402](https://doi.org/10.1093/nar/gkv402)
+
+[^3]: Rose AS, Bradley AR, Valasatava Y, Duarte JM, Prlić A & Rose PW (2016) Web-based molecular graphics for large complexes. Proceedings of the 21st international conference on Web3D technology 185-186.[DOI: 10.1145/2945292.2945324](http://dx.doi.org/10.1145/2945292.2945324)

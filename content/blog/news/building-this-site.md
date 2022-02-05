@@ -168,6 +168,10 @@ This is an orange alert. Use `title="some title" color="secondary"`
 
 Make appropriate changes to `content/en/about/_index.html`.
 
+### Add a Logo
+
+I made an image in Affinity Designer, and exported it as `logo.svg` and put it in the `assets/icons/` directory. Once I created the `logo.svg` file, I removed the `width="100%" height="100%" ` from the `<svg  >` tag. Otherwise, the logo was moved away from the left margin.
+
 ### Modify the `content` Directory
 
 Because this is not a "true" documentation website, I will rename the *Documentation* directory. I'll also delete the unneeded subdirectories, and rename others.
@@ -184,6 +188,14 @@ weight: 20
 
 Because I will not be using multiple languages, I moved the content out of the `en/` directory and into the root of the `content/` directory.
 
+### Get Links to Open in a New Tab
+
+To get external links to open in a new browser tab, you need use a [render hook template](https://gohugo.io/getting-started/configuration-markup/#render-hook-templates). Just add the following code to `layouts/_default/_markup/render-link.html` and you are good to go!
+
+```html
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
+```
+
 ### Git Stuff
 
 I need to do the following to clean up the version control of the site.
@@ -192,3 +204,9 @@ I need to do the following to clean up the version control of the site.
 - Remove `.DS_store` and similar files from tracking by git
 - Push to `GitHub`
 - Set up automatic deploy
+
+
+<rect x="225.138" y="245.419" width="129.878" height="124.6" style="fill:none;"/>
+
+
+
