@@ -91,6 +91,9 @@ view.add_ball_and_stick("not protein")
 
 Commands for NGLView can be found in the [NGLView Documentation](http://nglviewer.org/nglview/latest/api.html#), but not many examples are given. Also, visit the [NGL](https://www.rcsb.org/docs/3d-viewers/ngl) page on the RCSB website for help in using NGLViewer.
 
+- [Interactive data analysis with NGLView, pytraj and Jupyter notebook](https://ambermd.org/tutorials/analysis/tutorial_notebooks/nglview_notebook/index.html)
+- [Selection language from NGL documentation](https://nglviewer.org/ngl/api/manual/usage/selection-language.html)
+
 ### Enable the NGLView GUI
 
 There is a development version of a graphical user interface (GUI) that runs well on colab. Let's play with it for a bit.
@@ -250,6 +253,26 @@ def superpose(self, components=[1,], ref=0, align=True, selection_0='', selectio
   
 nglview.superpose(components=[1], ref=0, align=True, selection_0='4g0n', selection_1='4gzl')
 ```
+
+## Other Resources
+
+[Talktorial: T017 · Advanced NGLview usage](https://projects.volkamerlab.org/teachopencadd/talktorials/T017_advanced_nglview_usage.html). This is where I found how to render a static image.
+
+```py
+view.render_image(trim=True, factor=2)
+```
+
+>- `trim=True` removes the blank padding around the molecule
+>- `factor=2` asks for a 2x resolution render for higher quality, but not too much (default is 4x)
+
+```py
+view._display_image()
+```
+
+Also a nice list of the `view.add_(…)` commands.
+
+
+
 
 [^1]: Nguyen H, Case DA & Rose AS (2018) NGLview-interactive molecular graphics for Jupyter notebooks. *Bioinformatics* **34**: 1241-1242.[DOI: 10.1093/bioinformatics/btx789](https://doi.org/10.1093/bioinformatics/btx789)
 

@@ -8,7 +8,7 @@ description: >
   This blog post provides a description of how I built this site using Hugo and the Docsy theme.
 ---
 
-### Introduction
+## Introduction
 
 I wanted to build a site to store all the information I'm gathering for my course, *Practical Molecular Dynamics*. I've been happy using Hugo to build my *PyMOL Notes* website, and I like the automatic deploy to [GitHub Pages](https://pages.github.com/). This time I'll use the [Docsy theme](https://themes.gohugo.io/themes/docsy/) for Hugo. It is a theme designed for documentation. It looks great and has all the features I want. For a list of features and helpful tips, check out the [Docsy documentation](https://www.docsy.dev/docs/).
 
@@ -122,10 +122,10 @@ Success! Now I have a site that I can use as a template.
 
 ### Modify Home Page
 
-- Copy the content from the example site into `~/Sites/md-sims/content/en`.
-- Move a background image into the `~/Sites/md-sims/content/en` directory. I used a `.jpg` image the same size (1290 x 1280 pixels) as the example image.
+- Copy the content from the example site into `~/Sites/md-sims/content/`.
+- Move a background image into the `~/Sites/md-sims/content/` directory. I used a `.jpg` image the same size (1290 x 1280 pixels) as the example image.
 - Rename the image to `actin-spheres-background.jpg`. The `cover.html` file in `themes/docsy/layouts/shortcodes/blocks` specifies the background image as one with `background` in the image name. See the [Docsy documentation](https://www.docsy.dev/docs/adding-content/iconsimages/) for details.
-- Change the text in `_index.html` in `~/Sites/md-sims/content/en`. Add the site title and the subtitle,*A place to collect and organize my notes on MD simulations*. Eh, not particularly engaging, but good enough for now.
+- Change the text in `_index.html` in `~/Sites/md-sims/content/`. Add the site title and the subtitle,*A place to collect and organize my notes on MD simulations*. Eh, not particularly engaging, but good enough for now.
 - There are spaces for additional text on the landing page under the main image and additional sections, but I don't need them right now. I'll comment out the things I don't need.
 
 ### Modify Footer
@@ -133,7 +133,7 @@ Success! Now I have a site that I can use as a template.
 Copy the `md-sims/themes/docsy/layouts/partials/footer.html` to `md-sims/layouts/partials`, then modify the copy, This will override the theme file. Using overrides allows you to update the theme files without destroying your modifications.
 
 {{% alert title="Note" color="primary" %}}
-The copyright notice, Privacy Policy, and links to StackOverflow and GitHub are found in `config.toml`, not in `footer.html`. To change the text of the "About" link in the footer, change the `title` text in `content/en/about/_index.html`.
+The copyright notice, Privacy Policy, and links to StackOverflow and GitHub are found in `config.toml`, not in `footer.html`. To change the text of the "About" link in the footer, change the `title` text in `content/about/_index.html`.
 {{% /alert %}}
 
 #### Alert Shortcodes
@@ -166,17 +166,19 @@ This is an orange alert. Use `title="some title" color="secondary"`
 
 ### Modify the "About" Page
 
-Make appropriate changes to `content/en/about/_index.html`.
+Make appropriate changes to `content/about/_index.html`.
 
 ### Add a Logo
 
-I made an image in Affinity Designer, and exported it as `logo.svg` and put it in the `assets/icons/` directory. Once I created the `logo.svg` file, I removed the `width="100%" height="100%" ` from the `<svg  >` tag. Otherwise, the logo was moved away from the left margin.
+I made an image in the graphics design program, Affinity Designer, exported it as `logo.svg`, and put it in the `assets/icons/` directory. Once I created the `logo.svg` file, I removed the `width="100%" height="100%"` from the `<svg  >` tag. Otherwise, the logo was moved away from the left margin.
+
+Also, to get the new `favicon` to show up in the browser, refresh the page.
 
 ### Modify the `content` Directory
 
-Because this is not a "true" documentation website, I will rename the *Documentation* directory. I'll also delete the unneeded subdirectories, and rename others.
+Because this is not a "true" documentation website, I will eventually rename the *Documentation* directory. I'll also delete the unneeded subdirectories, and rename others.
 
-Rename the `md-sims/content/en/blog/releases` directory to `reference` and change the `_index.md` contents to:
+Rename the `md-sims/content/blog/releases` directory to `reference` and change the `_index.md` contents to:
 
 ```toml
 ---
@@ -206,7 +208,7 @@ I need to do the following to clean up the version control of the site.
 - Set up automatic deploy
 
 
-<rect x="225.138" y="245.419" width="129.878" height="124.6" style="fill:none;"/>
+
 
 
 
