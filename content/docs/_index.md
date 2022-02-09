@@ -8,7 +8,7 @@ menu:
 ---
 
 {{% pageinfo %}}
-This site contains the tutorials and assignments I will use in my *Practical Molecular Dynamics* course. The code presented here is designed to run in [Jupyter notebooks](https://jupyter.org/) on [Google Colab](https://colab.research.google.com/). The notebooks can be found in my [Molecular Dynamics GitHub repository](https://github.com/dgoppenheimer/Molecular-Dynamics).
+This site contains the tutorials and assignments I will use in my *Practical Molecular Dynamics* course. Most of the code presented here is designed to run in [Jupyter notebooks](https://jupyter.org/) on [Google Colab](https://colab.research.google.com/). The notebooks can be found in my [Molecular Dynamics GitHub repository](https://github.com/dgoppenheimer/Molecular-Dynamics).
 {{% /pageinfo %}}
 
 This section is where the user documentation for your project lives - all the information your users need to understand and successfully use your project.

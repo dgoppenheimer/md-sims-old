@@ -147,3 +147,35 @@ See [seaborn.boxplot](https://seaborn.pydata.org/generated/seaborn.boxplot.html)
 
 And more information is found in [Visualization with Seaborn](https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/04.14-Visualization-With-Seaborn.ipynb)
 
+## Getting `.pdb` Files
+
+An easy way to get files is to use `wget`.
+
+```py
+!wget http://files.rcsb.org/view/4tuh.pdb
+```
+
+Download the biological assembly of `4tuh`:
+
+```py
+!wget https://files.rcsb.org/download/4TUH.pdb1.gz
+!gunzip 4TUH.pdb1.gz
+```
+
+
+
+
+
+Note: 
+
+Test that you can download the biological assembly and rename it.
+
+---
+
+Good descriptions of what's in a `.pdb` file--better than the PDB101 section on the RCSB website. Assign the one from `wwpdb.org`.
+
+[Protein Data Bank Contents Guide](https://www.wwpdb.org/documentation/file-format-content/format33/sect9.html)
+
+[Coordinate File Description (PDB Format)](https://zhanggroup.org/SSIPe/pdb_atom_format.html)
+
+[Introduction to Protein Data Bank Format](https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html)
