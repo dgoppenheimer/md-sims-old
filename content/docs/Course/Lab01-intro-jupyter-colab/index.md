@@ -1,16 +1,32 @@
 ---
 categories: ["tutorials"]
-tags: ["allostery", "gromacs"]
+tags: ["jupyter", "colab"]
 title: "Lab 01: Introduction to Jupyter notebooks and Colab"
 linkTitle: "Lab 01"
 date: 2022-01-28
 description: >
   In this exercise you will learn about Jupyter notebooks and Google Colaboratory (Colab).
 resources:
-- src: ""
+- src: "move-cells.png, add-cells.png, run-anyway.png, mount-drive.png, g-create.png"
   params:
     byline: ""
 ---
+
+[<img  width="50" src="https://drive.google.com/uc?export=view&id=1-JE5lbCK4Amelom8clmAyXUOAoyHhfiq" alt="Colaboratory logo" align="left" hspace="10" vspace="30" /> ](https://drive.google.com/uc?export=view&id=1-JE5lbCK4Amelom8clmAyXUOAoyHhfi)
+
+## Welcome to Google Colaboratory!
+
+What is Google Colaboratory?
+
+[Google Colaboratory](https://colab.research.google.com/) (or “Colab” for short) is a cloud-based platform that allows users to run software on high-performance computer clusters for free. Colab uses the [Jupyter notebook](https://jupyter.org/) format, which allows users to create and store code, computing output, visualizations, and text within a web browser.
+
+Watch the video, below, to get a brief introduction to what Colab offers.
+
+{{< youtube inN8seMm7UI >}}
+
+
+
+
 
 ## Jupyter Notebooks
 
@@ -18,14 +34,69 @@ resources:
 
 Jupyter notebooks can be run locally on your own computer, and can use many different programming languages. However, we will be used a web-based notebook that uses the [python](https://www.python.org/) language.
 
-## Google Colaboratory (Colab)
+### Cells
 
-What is Google Colab? From the [Google Colab FAQ page](https://research.google.com/colaboratory/faq.html):
+Jupyter notebooks are made up of two kinds of cells: **code cells** and **text cells**. 
 
->Colaboratory, or “Colab” for short, is a product from Google Research. Colab allows anybody to write and execute arbitrary python code through the browser, and is especially well suited to machine learning, data analysis and education. More technically, Colab is a hosted Jupyter notebook service that requires no setup to use, while providing free access to computing resources including GPUs.
+#### Adding and moving cells
 
-Watch the video, below, to get a brief introduction to what Colab offers.
-See [Get started with Google Colaboratory (Coding TensorFlow)](https://www.youtube.com/watch?v=inN8seMm7UI) for a quick introduction to Colab.
+New code or text cells can be added by using the `+ CODE` and `+ TEXT` buttons that show up when you hover at the bottom of a cell. You can also find these buttons in the toolbar above the notebook.
 
-{{< youtube inN8seMm7UI >}}
+[<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/add-cells.png?raw=true" alt="add cells" width="560"/>](https://github.com/dgoppenheimer/notebook-images/blob/main/add-cells.png?raw=true)
+
+You can move a cell by selecting it and clicking the up arrow button(which moves selected cell up) or the down arrow button (which moves the selected cell down) in the toolbar in the upper right of a selected cell.
+
+[<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/move-cells.png?raw=true" alt="move cells" width="560"/>](https://github.com/dgoppenheimer/notebook-images/blob/main/move-cells.png?raw=true)
+
+#### Text Cells
+
+Text cells are used to annotate your code, describe your workflow, provide instructions, or add additional information to your notebook. Text cells are formatted using [Markdown](https://daringfireball.net/projects/markdown/), a text to `html` conversion tool widely used to format text on the web. With Markdown, you can add text formatting such as **bold** and *italics*, add images, links, and more!
+
+For more information, please visit the [Markdown Guide](https://www.markdownguide.org/), especially the [Getting Started](https://www.markdownguide.org/getting-started/) section. We will be using Markdown throughout this course to format our text cells.
+
+#### Code Cells
+
+Below is a code cell. Once the toolbar button indicates `CONNECTED`, click in the cell to select it and execute the contents in the following ways:
+
+- Click the `Play` icon in the upper left corner of the code cell; it will appear when you hover over the `[ ]`.
+- Type `Cmd/Ctrl+Enter` to run the cell in place
+- Type `Shift+Enter` to run the cell and move to the next cell. A new cell will be added if there are no remaining cells.
+- Type `Alt+Enter` to run the cell and insert a new code cell immediately below it.
+
+Additional options for running some or all cells in your notebook can be found in the `Runtime` menu.
+
+```py
+# This is a comment in a code cell
+# It is preceded by a hash symbol (#)
+# Comments are useful for annotating parts of your code
+# Comments are ignored when the code cell is run
+codons = 154
+protein_MW = codons * 110
+print(protein_MW)
+```
+
+
+
+Click the button, Open in Colab
+Run the cell, Mount Google Drive
+Wait until the notebook connects with Google's computers
+
+g-create
+[<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/g-create.png?raw=true" alt="create account" width="560"/>](https://github.com/dgoppenheimer/notebook-images/blob/main/g-create.png?raw=true)
+
+{{< figure src="https://github.com/dgoppenheimer/notebook-images/blob/main/g-create.png?raw=true" alt="create account" width="560" >}}
+
+mount-drive
+[<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/mount-drive.png?raw=true" alt="mount Google Drive" width="560"/>](https://github.com/dgoppenheimer/notebook-images/blob/main/mount-drive.png?raw=true)
+
+{{< figure src="https://github.com/dgoppenheimer/notebook-images/blob/main/mount-drive.png?raw=true" alt="mount Google Drive" width="560" >}}
+
+run-anyway
+[<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/run-anyway.png?raw=true" alt="add cells" width="560"/>](https://github.com/dgoppenheimer/notebook-images/blob/main/run-anywa.png?raw=true)
+
+
+{{< figure src="https://github.com/dgoppenheimer/notebook-images/blob/main/run-anyway.png?raw=true"  alt="run anyway" width="560px" >}}
+
+
+(You may need to mount your drive, again)
 

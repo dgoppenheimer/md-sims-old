@@ -35,14 +35,14 @@ hugo version
 
 Success!
 
-### Create a project
+## Create a project
 
 ```zsh
 cd ~/Sites
 hugo new site md-sims
 ```
 
-#### Install PostCSS
+### Install PostCSS
 
 This is from the [Docsy documentation](https://www.docsy.dev/docs/getting-started/).
 
@@ -58,7 +58,7 @@ npm install -D postcss
 
 Success!
 
-### Install the theme
+## Install the theme
 
 Follow the *Option 2: Use the Docsy theme in your own site* section from the [Docsy documentation](https://www.docsy.dev/docs/getting-started/).
 
@@ -74,7 +74,7 @@ echo 'theme = "docsy"' >> config.toml
 git submodule update --init --recursive
 ```
 
-### Preview the Site
+## Preview the Site
 
 ```zsh
 hugo server
@@ -96,7 +96,7 @@ hugo server
 
 Success!
 
-### Configure the Site
+## Configure the Site
 
 Start by copying the `config.toml` file from the [example project](https://github.com/google/docsy-example/blob/master/config.toml) into the `md-sims` directory.
 
@@ -112,7 +112,7 @@ hugo server
 
 Success! Now I have a site that I can use as a template.
 
-### Modify `config.toml`
+## Modify `config.toml`
 
 - Add the site name to `title = " "`. There are two places, one at the top, and one under `[languages]`. For now I'll name the site *Molecular Dynamics*.
 - I'll comment out the sections I don't need like the other languages and some of the social media sections.
@@ -120,7 +120,7 @@ Success! Now I have a site that I can use as a template.
 - Change links to GitHub and StackOverflow. I'll modify the link to point to the repository of this site after I get things up and running.
 - In `[markup]`, change `[markup.highlight]` to `style = "emacs"`.
 
-### Modify Home Page
+## Modify Home Page
 
 - Copy the content from the example site into `~/Sites/md-sims/content/`.
 - Move a background image into the `~/Sites/md-sims/content/` directory. I used a `.jpg` image the same size (1290 x 1280 pixels) as the example image.
@@ -128,7 +128,7 @@ Success! Now I have a site that I can use as a template.
 - Change the text in `_index.html` in `~/Sites/md-sims/content/`. Add the site title and the subtitle,*A place to collect and organize my notes on MD simulations*. Eh, not particularly engaging, but good enough for now.
 - There are spaces for additional text on the landing page under the main image and additional sections, but I don't need them right now. I'll comment out the things I don't need.
 
-### Modify Footer
+## Modify Footer
 
 Copy the `md-sims/themes/docsy/layouts/partials/footer.html` to `md-sims/layouts/partials`, then modify the copy, This will override the theme file. Using overrides allows you to update the theme files without destroying your modifications.
 
@@ -136,7 +136,7 @@ Copy the `md-sims/themes/docsy/layouts/partials/footer.html` to `md-sims/layouts
 The copyright notice, Privacy Policy, and links to StackOverflow and GitHub are found in `config.toml`, not in `footer.html`. To change the text of the "About" link in the footer, change the `title` text in `content/about/_index.html`.
 {{% /alert %}}
 
-#### Alert Shortcodes
+## Alert Shortcodes
 
 Here are the different colors assigned to the alert shortcodes, and how each will render. You can change the title to whatever you like.
 
@@ -164,17 +164,17 @@ This is a dark alert. Use `title="some title" color="dark"`
 This is an orange alert. Use `title="some title" color="secondary"`
 {{% /alert %}}
 
-### Modify the "About" Page
+## Modify the "About" Page
 
 Make appropriate changes to `content/about/_index.html`.
 
-### Add a Logo
+## Add a Logo
 
 I made an image in the graphics design program, Affinity Designer, exported it as `logo.svg`, and put it in the `assets/icons/` directory. Once I created the `logo.svg` file, I removed the `width="100%" height="100%"` from the `<svg  >` tag. Otherwise, the logo was moved away from the left margin.
 
 Also, to get the new `favicon` to show up in the browser, refresh the page.
 
-### Modify the `content` Directory
+## Modify the `content` Directory
 
 Because this is not a "true" documentation website, I will eventually rename the *Documentation* directory. I'll also delete the unneeded subdirectories, and rename others.
 
@@ -190,7 +190,7 @@ weight: 20
 
 Because I will not be using multiple languages, I moved the content out of the `en/` directory and into the root of the `content/` directory.
 
-### Get Links to Open in a New Tab
+## Get Links to Open in a New Tab
 
 To get external links to open in a new browser tab, you need use a [render hook template](https://gohugo.io/getting-started/configuration-markup/#render-hook-templates). Just add the following code to `layouts/_default/_markup/render-link.html` and you are good to go!
 
@@ -198,7 +198,7 @@ To get external links to open in a new browser tab, you need use a [render hook 
 <a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
 ```
 
-### Git Stuff
+## Git Stuff
 
 I need to do the following to clean up the version control of the site.
 
@@ -207,8 +207,35 @@ I need to do the following to clean up the version control of the site.
 - Push to `GitHub`
 - Set up automatic deploy
 
+### Badges
 
+[Binder](https://mybinder.org/)
+I will include `open in colab`, `launch binder`, and `render in nbviewer` badges to each notebook in my GitHub repository. Binder
 
+## Images
 
+I use [Hugo shortcodes](https://gohugo.io/content-management/shortcodes/) for displaying images on this site, but on Colab I have to use Markdown:
 
+```mk
+![image description](https://github.com/path/to/image/image.png)
+```
 
+Unfortunately, the limited markdown renderer used by Colab does not allow the image size to be adjusted--it takes up the container width. This does not look good for many images. I found [this workaround on Stackoverflow](https://stackoverflow.com/questions/14675913/changing-image-size-in-markdown):
+
+```mk
+[<img src="/logo-stackoverflow.png" width="250"/>](/logo-stackoverflow.png)
+```
+
+Which renders as:
+
+[<img src="/logo-stackoverflow.png" width="250" />](/logo-stackoverflow.png)
+
+For Colab, I store the images in a repository on GitHub. To properly display the images, you need to append `?raw=true` to the end of the address for the image. For example:
+
+```html
+[<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/logo-stackoverflow.png?raw=true" alt="Stackoverflow logo" width="250" />](https://github.com/dgoppenheimer/notebook-images/blob/main/logo-stackoverflow.png?raw=true)
+```
+
+renders as:
+
+[<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/logo-stackoverflow.png?raw=true" alt="Stackoverflow logo" width="250" />](https://github.com/dgoppenheimer/notebook-images/blob/main/logo-stackoverflow.png?raw=true)
