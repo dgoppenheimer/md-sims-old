@@ -16,7 +16,7 @@ See the [Getting Started](https://www.docsy.dev/docs/getting-started/) page of t
 
 I already have Hugo installed.
 
-```zsh
+```bash
 hugo version
     hugo v0.89.3 darwin/amd64 BuildDate=unknown
 # The latest version is v0.92.0, I'll update.
@@ -28,7 +28,7 @@ port installed
  # this will take a while
 ```
 
-```zsh
+```bash
 hugo version
     hugo v0.92.0 darwin/amd64 BuildDate=unknown
 ```
@@ -37,7 +37,7 @@ Success!
 
 ## Create a project
 
-```zsh
+```bash
 cd ~/Sites
 hugo new site md-sims
 ```
@@ -46,7 +46,7 @@ hugo new site md-sims
 
 This is from the [Docsy documentation](https://www.docsy.dev/docs/getting-started/).
 
-```zsh
+```bash
 # in the ~/Sites/md-sims directory
 npm --version
     8.1.0
@@ -62,7 +62,7 @@ Success!
 
 Follow the *Option 2: Use the Docsy theme in your own site* section from the [Docsy documentation](https://www.docsy.dev/docs/getting-started/).
 
-```zsh
+```bash
 # in the ~/Sites directory
 hugo new site md-sims
 cd md-sims
@@ -76,20 +76,20 @@ git submodule update --init --recursive
 
 ## Preview the Site
 
-```zsh
+```bash
 hugo server
 # preview site at http://localhost:1313/
 ```
 
 Site would not build. I needed the `extended` variant of Hugo.
 
-```zsh
+```bash
 sudo port install hugo +extended
 ```
 
 Spin up the site.
 
-```zsh
+```bash
 hugo server
 # preview site at http://localhost:1313/
 ```
@@ -102,7 +102,7 @@ Start by copying the `config.toml` file from the [example project](https://githu
 
 To get a better idea of how the theme structures content, I'll clone the [Docsy example site](https://github.com/google/docsy-example). The steps, below are from the [Docsy documentation](https://www.docsy.dev/docs/getting-started/#using-the-command-line).
 
-```zsh
+```bash
 cd ~/Sites
 git clone https://github.com/google/docsy-example.git
 cd docsy-example
@@ -138,7 +138,15 @@ The copyright notice, Privacy Policy, and links to StackOverflow and GitHub are 
 
 ## Alert Shortcodes
 
-Here are the different colors assigned to the alert shortcodes, and how each will render. You can change the title to whatever you like.
+Here are the different colors assigned to the alert shortcodes. You can change the title to whatever you like.
+
+Shortcode format:
+
+```go
+{{%/* alert title="Warning" color="warning" */%}}
+This is a warning. Use `title="Warning" color="warning"`
+{{%/* /alert */%}}
+```
 
 {{% alert title="Warning" color="warning" %}}
 This is a warning. Use `title="Warning" color="warning"`
@@ -216,13 +224,13 @@ I will include `open in colab`, `launch binder`, and `render in nbviewer` badges
 
 I use [Hugo shortcodes](https://gohugo.io/content-management/shortcodes/) for displaying images on this site, but on Colab I have to use Markdown:
 
-```mk
+```markdown
 ![image description](https://github.com/path/to/image/image.png)
 ```
 
 Unfortunately, the limited markdown renderer used by Colab does not allow the image size to be adjusted--it takes up the container width. This does not look good for many images. I found [this workaround on Stackoverflow](https://stackoverflow.com/questions/14675913/changing-image-size-in-markdown):
 
-```mk
+```html
 [<img src="/logo-stackoverflow.png" width="250"/>](/logo-stackoverflow.png)
 ```
 
