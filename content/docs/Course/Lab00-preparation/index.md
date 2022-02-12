@@ -157,7 +157,3 @@ Code for the Jupyter notebook:
 ```
 
 {{% /alert %}}
-
-
-
-

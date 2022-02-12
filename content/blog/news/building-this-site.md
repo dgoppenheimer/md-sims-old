@@ -292,3 +292,23 @@ jobs:
 ```
 
 Note: I removed `–minify` from `run: hugo`, otherwise, my `svg` logo was not visible.
+
+### Set Up Remote Repository
+
+I set up the new `md-sims` repository in GitHub.
+
+Upload my content:
+
+```bash
+git remote add origin git@github.com:dgoppenheimer/md-sims.git
+git branch -M main
+git push -u origin main
+```
+
+Go to GitHub and change the settings for the `md-sims` repository so that it uses the `main` branch for GitHub Pages.
+
+```bash
+hugo new content/test-page.md
+```
+
+Check out the site at `https://dgoppenheimer.github.io/md-sims/`!
