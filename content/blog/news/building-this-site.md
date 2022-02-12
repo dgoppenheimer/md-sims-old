@@ -247,3 +247,48 @@ For Colab, I store the images in a repository on GitHub. To properly display the
 renders as:
 
 [<img src="https://github.com/dgoppenheimer/notebook-images/blob/main/logo-stackoverflow.png?raw=true" alt="Stackoverflow logo" width="250" />](https://github.com/dgoppenheimer/notebook-images/blob/main/logo-stackoverflow.png?raw=true)
+
+## Automatic Build and Deploy Using GitHub Actions
+
+See the following tutorial from `peaceiris`:
+
+[Deploy Hugo project to GitHub Pages with GitHub Actions](https://discourse.gohugo.io/t/deploy-hugo-project-to-github-pages-with-github-actions/20725)
+
+First, create a `.github/workflows/` directory in your project root.
+
+Next, create a `gh-pages.yaml` file in the `.github/workflows/` directory that has the following contents:
+
+```yaml
+name: github pages
+
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.75.1'
+          # extended: true
+
+      - name: Build
+        run: hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.EXAMPLE_TOKEN }}
+          publish_dir: ./public
+```
+
+Note: I removed `–minify` from `run: hugo`, otherwise, my `svg` logo was not visible.

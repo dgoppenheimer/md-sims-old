@@ -104,12 +104,23 @@ Allow access
 
 When the cell is done running and your G-drive is mounted, you should see `Mounted at /content/drive` in the output area of the cell.
 
-5. Save a copy of the notebook to your G-drive. Click the folder icon on the left of the notebook.
+5. Save a copy of the notebook to your G-drive. Click the folder icon on the left of the notebook to see your mounted drive and other files that you can access in this notebook.
 
+{{< imgproc folder-icon.png Resize "550x" >}}
+Click the folder icon
+{{< /imgproc >}}
 
+{{< imgproc files.png Resize "550x" >}}
+See your files!
+{{< /imgproc >}}
 
+6. Rename the notebook by prepending `<last name><first initial>-` (without the spaces or `<` `>` characters) to the notebook name. For example: `oppenheimerd-Lab01-intro-jupyter.ipynb`.
 
+{{< imgproc rename-notebook.png Resize "550x" >}}
+Rename your notebook
+{{< /imgproc >}}
 
+Once your notebook is renamed, save a copy to your G-drive.
 
 ---
 
@@ -147,11 +158,6 @@ Code for the Jupyter notebook:
 
 {{% /alert %}}
 
-
-
-connect
-save a copy to drive
-change name of notebook
 
 
 
