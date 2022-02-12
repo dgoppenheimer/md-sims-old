@@ -250,25 +250,28 @@ renders as:
 
 ## Automatic Build and Deploy Using GitHub Actions
 
-See the following tutorial from `peaceiris`:
+See the following tutorial from `peaceiris`: [GitHub Actions for Hugo](https://github.com/peaceiris/actions-hugo)
 
-[Deploy Hugo project to GitHub Pages with GitHub Actions](https://discourse.gohugo.io/t/deploy-hugo-project-to-github-pages-with-github-actions/20725)
+Additional information is found in the `README.md` file on the GitHub repo for [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages).
 
 First, create a `.github/workflows/` directory in your project root.
 
-Next, create a `gh-pages.yaml` file in the `.github/workflows/` directory that has the following contents:
+Next, create a `gh-pages.yml` file in the `.github/workflows/` directory that has the following contents:
 
 ```yaml
-name: github pages
+name: GitHub Pages
 
 on:
   push:
     branches:
       - main  # Set a branch to deploy
+  pull_request:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -278,26 +281,27 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.75.1'
-          # extended: true
+          hugo-version: '0.91.2'
+          extended: true
 
       - name: Build
-        run: hugo
+        run: hugo # --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          github_token: ${{ secrets.EXAMPLE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 ```
 
-Note: I removed `–minify` from `run: hugo`, otherwise, my `svg` logo was not visible.
+Note: I removed `–minify` from `run: hugo`, and changed `extended:` to `extended: true`.
 
-### Set Up Remote Repository
+### Set Up the Remote Repository
 
-I set up the new `md-sims` repository in GitHub.
-
-Upload my content:
+- Set up the new `md-sims` repository in GitHub.
+- Go to GitHub and change the settings for the `md-sims` repository so that it uses the `main` branch for GitHub Pages.
+- Upload content:
 
 ```bash
 git remote add origin git@github.com:dgoppenheimer/md-sims.git
@@ -305,10 +309,32 @@ git branch -M main
 git push -u origin main
 ```
 
-Go to GitHub and change the settings for the `md-sims` repository so that it uses the `main` branch for GitHub Pages.
+{{% alert title="Tip" color="primary" %}}
+Due to the limitations of the `GITHUB_TOKEN` the first deployment will fail. Go back to GitHub and change the GitHub Pages Source to the `gh-pages` branch. The build will succeed. Then change back to the `main` branch.
+{{% /alert %}}
+
+- Create a new `gh-pages` branch.
+
+```bash
+# in the root of my project
+git switch -c gh-pages
+git status
+# On branch gh-pages
+# nothing to commit, working tree clean
+git push origin gh-pages
+```
+
+### Create a Deploy Key
+
+ACTIONS_DEPLOY_KEY
+I need to set up the secret TOKEN \
+
+(https://medium.com/@asishrs/automate-your-github-pages-deployment-using-hugo-and-actions-518b959a51f9)
 
 ```bash
 hugo new content/test-page.md
 ```
 
 Check out the site at `https://dgoppenheimer.github.io/md-sims/`!
+
+See [Deploy Keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys)
