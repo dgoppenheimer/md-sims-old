@@ -370,4 +370,5 @@ Change `config.toml` to `baseURL = "https://dgoppenheimer.github.io/md-sims/"`
 
 Check out the site at `https://dgoppenheimer.github.io/md-sims/`!
 
-test
+change `submodules: true` to `submodules: recursive` in `gh-pages.yml`
+
