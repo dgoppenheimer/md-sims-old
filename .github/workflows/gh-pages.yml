@@ -10,7 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     concurrency:
-      # group: ${{ github.workflow }}-${{ github.ref }}
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -24,12 +24,12 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo
+        run: hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          # deploy_key: ${{ secrets.EXAMPLE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          
