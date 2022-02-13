@@ -366,10 +366,8 @@ See [Set SSH Private Key deploy_key](https://github.com/peaceiris/actions-gh-pag
     publish_dir: ./public
 ```
 
-
-- Create a [SSH Deploy Key](https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-create-ssh-deploy-key)
-
+Change `config.toml` to `baseURL = "https://dgoppenheimer.github.io/md-sims/"`
 
 Check out the site at `https://dgoppenheimer.github.io/md-sims/`!
 
-See [Deploy Keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys)
+

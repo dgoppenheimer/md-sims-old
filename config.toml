@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://dgoppenheimer.github.io/md-sims/"
 languageCode = 'en-us'
 
 title = "Molecular Dynamics"
