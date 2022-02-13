@@ -371,4 +371,18 @@ Change `config.toml` to `baseURL = "https://dgoppenheimer.github.io/md-sims/"`
 Check out the site at `https://dgoppenheimer.github.io/md-sims/`!
 
 change `submodules: true` to `submodules: recursive` in `gh-pages.yml`
+Could not get the site to build,
+
+looked at the errors on Actions page in GitHub and saw:
+
+build error:
+
+```bash
+Error: Error building site: POSTCSS: failed to transform "scss/main.css" (text/css). Check your PostCSS installation; install with "npm install postcss-cli". See https://gohugo.io/hugo-pipes/postcss/: this feature is not available in your current Hugo version, see https://goo.gl/YMrWcn for more information
+```
+
+See this [Workflow for autoprefixer and postcss-cli](https://github.com/marketplace/actions/hugo-setup#%EF%B8%8F-workflow-for-autoprefixer-and-postcss-cli)
+
+Used this new workflow, changed `master` to `main`
+
 
