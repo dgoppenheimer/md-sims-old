@@ -386,3 +386,170 @@ See this [Workflow for autoprefixer and postcss-cli](https://github.com/marketpl
 Used this new workflow, changed `master` to `main`
 
 test
+
+workflow for docsy
+https://github.com/peaceiris/actions-hugo#%EF%B8%8F-create-your-workflow
+
+---
+
+Try again--this time with *feeling*.
+
+{{% alert title="Note" color="secondary" %}}
+I could not get my site to deploy. I'll try again using Docker.
+{{% /alert %}}
+
+- Download Docker from the [Getting Started page](https://www.docker.com/get-started).
+- Follow the [Docker Quickstart instructions](https://www.docsy.dev/docs/getting-started/quickstart-docker/).
+    - Install Docker. (done)
+    - Install Git. (done)
+- Create a GitHub repository from the [Docsy template](https://github.com/google/docsy-example). Name it `docsy-example`.
+- Clone the repository to your local computer (use the `https` code).
+
+```bash
+cd ~/Sites
+git clone --recurse-submodules --depth 1 https://github.com/dgoppenheimer/docsy-example.git
+# the --recurse-submodules --depth 1 is important
+cd docsy-example
+```
+
+- Start the Docker app.
+- Build and run the Docker container.
+
+```bash
+docker-compose build
+```
+
+- Run the built image
+
+```bash
+docker-compose up
+```
+
+{{% alert title="Success" color="success" %}}
+
+{{% /alert %}}
+
+- Stop Docker Compose with **Ctrl + C**.
+- Remove the produced images.
+
+```bash
+docker-compose rm
+```
+
+- Test the site.
+
+```bash
+hugo server
+```
+
+- Go to `https://localhost:1313/`
+
+{{% alert title="Success" color="success" %}}
+
+{{% /alert %}}
+
+## Automatic Build and Deploy
+
+- Create a `.github/workflows/` directory in your project root.
+- Create a `gh-pages.yml` file in the `.github/workflows/` directory that has the following contents:
+
+```yaml
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive  # Fetch the Docsy theme
+          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.91.2'
+          extended: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+      - run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+```bash
+echo ".DS_Store" >> .gitignore
+echo ".gitignore" >> .gitignore
+git add .
+git commit -am "remove .DS_Store files"
+```
+
+See the [actions-hugo](https://github.com/peaceiris/actions-hugo) workflow example for docsy.
+
+I had to install [`gh cli`](https://cli.github.com/) to authenticate to GitHub so I could to a `git push`.
+
+The first `git push` after installing the workflow, did not complete.
+
+The error was:
+
+```bash
+npm ERR! cipm can only install packages with an existing package-lock.json or npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or later to generate it, then try again.
+```
+
+The project root I ran `npm install`, and a `package-lock.json` file was created.
+
+I changed a document in the site. Ready to run `git push` again.
+
+Could not get deploy to work The error was:
+
+```bash
+npm ERR! cipm can only install packages with an existing package-lock.json or npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or later to generate it, then try again.
+```
+
+But the `package-lock.json` file is there! Unfortunately, it was also listed in the `.gitignore` file, so I removed it.
+
+Successful deployment! Went to GitHub -> Settings -> Pages and changed it to the `gh-pages` branch.
+
+
+
+But the CSS is missing. Try removing `--minify` from the `gh-pages.yml` workflow.
+
+Went back to `.gitignore` and commented out the `resources/` directory.
+
+Try again.
+
+
+Still no css upon deploy.
+
+
+
+
+
+
+- Go to GitHub and change the name of the `master` branch to `main`.
+
